@@ -29,7 +29,6 @@ function CandidateJobs() {
     let jobs = [];
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
       jobs.push(doc.data());
     });
     setAllJobs(jobs);
@@ -39,11 +38,11 @@ function CandidateJobs() {
   }, []);
 
   const applyOnJob = async (job) => {
-    const Application_id = uuid();
+    const application_id = uuid();
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
-    await setDoc(doc(db, "applications", Application_id), {
+    await setDoc(doc(db, "applications", application_id), {
       job_id: job.job_id,
-      Application_id,
+      application_id,
       createdAt: new Date(),
       client_id: job.client_id,
       interest_showen: "candidate",
@@ -52,9 +51,9 @@ function CandidateJobs() {
       candidate_name: loggedInUser?.displayName
         ? loggedInUser.displayName
         : "candidate",
+      candidate_id: loggedInUser?.uid ? loggedInUser.uid : "candidate",
       project_bugdet: job?.budget ? job.budget : "budget",
-    });
-    
+    });  
   };
   return (
     <div>

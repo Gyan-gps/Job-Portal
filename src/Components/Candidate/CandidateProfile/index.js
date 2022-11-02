@@ -14,7 +14,6 @@ function CandidateProfile() {
       const docRef = doc(db, "usersData", userId);
       const docData = await getDoc(docRef);
       if (docData.exists()) {
-        console.log("Document data:", docData.data());
         setCandidateData({ ...docData.data() });
       } else {
         // doc.data() will be undefined in this case
@@ -95,7 +94,7 @@ function CandidateProfile() {
                 email<span style={{ color: "red" }}>*</span>
               </label>
               <TextField
-                disabled={!editState}
+                disabled={true}
                 required
                 type="email"
                 value={candidateData.email}
@@ -171,7 +170,7 @@ function CandidateProfile() {
               <label>linkedIn</label>
               <TextField
                 disabled={!editState}
-                value={candidateData.socialMedia.linkedIn}
+                value={candidateData.socialMedia?.linkedIn}
                 onChange={(e) => {
                   setCandidateData((p) => {
                     return {
@@ -193,7 +192,7 @@ function CandidateProfile() {
               <label>Twitter</label>
               <TextField
                 disabled={!editState}
-                value={candidateData.socialMedia.twitter}
+                value={candidateData.socialMedia?.twitter}
                 onChange={(e) => {
                   setCandidateData((p) => {
                     return {
@@ -216,7 +215,7 @@ function CandidateProfile() {
               <label>Github</label>
               <TextField
                 disabled={!editState}
-                value={candidateData.socialMedia.github}
+                value={candidateData.socialMedia?.github}
                 onChange={(e) => {
                   setCandidateData((p) => {
                     return {
@@ -235,7 +234,7 @@ function CandidateProfile() {
               <label>Instagram</label>
               <TextField
                 disabled={!editState}
-                value={candidateData.socialMedia.instagram}
+                value={candidateData.socialMedia?.instagram}
                 onChange={(e) => {
                   setCandidateData((p) => {
                     return {

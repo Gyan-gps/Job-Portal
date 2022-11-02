@@ -10,11 +10,21 @@ function PostJob() {
       <Grid container spacing={2}>
         <Grid
           sx={{
+            display: { xs: "flex", sm: "none" },
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          xs={12}
+        >
+          <Button onClick={() => setMobileStep((p) => !p)}>{mobileStep?"Add new Job":"back"}</Button>
+        </Grid>
+        <Grid
+          sx={{
             display: { xs: mobileStep ? "block" : "none", sm: "block" },
           }}
           item
           xs={12}
-          sm={4}
+          sm={3}
           md={3}
         >
           <SideBar />
@@ -25,12 +35,11 @@ function PostJob() {
           }}
           item
           xs={12}
-          sm={8}
+          sm={9}
           md={9}
         >
           <JobForm />
         </Grid>
-        <Button onClick={() => setMobileStep((p) => !p)}>shift</Button>
       </Grid>
     </div>
   );

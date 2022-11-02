@@ -1,11 +1,11 @@
-import Routes from "./routes";
+import Navs from "./routes";
 
 
 function App() {
  
   return (
     <div className="App">
-      <Routes/>
+      <Navs/>
     </div>
   );
 }
